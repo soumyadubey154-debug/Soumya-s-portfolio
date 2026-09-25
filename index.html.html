@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F7F5F1" />
+<title>Soumya Dubey — UI/UX Designer & Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Soumya Dubey — BCA student, UI/UX designer and full-stack developer in training. Turning ideas into interfaces, and interfaces into working products." />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%236A46F0'/><text x='50' y='69' font-family='monospace' font-size='44' font-weight='700' fill='white' text-anchor='middle'>SD</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- ══════════════ PRELOADER ══════════════ -->
+<div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading portfolio">
+  <div class="preloader__inner">
+    <div class="preloader__mark">SD</div>
+    <div class="preloader__count"><span id="preCount">0</span><i>%</i></div>
+    <div class="preloader__bar"><div class="preloader__bar-fill" id="preBar"></div></div>
+    <div class="preloader__label">Assembling experience</div>
+  </div>
+</div>
+
+<!-- ══════════════ CUSTOM CURSOR ══════════════ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__dot" id="cursorDot"></div>
+  <div class="cursor__ring" id="cursorRing"></div>
+</div>
+
+<!-- ══════════════ BACKGROUND LAYERS ══════════════ -->
+<div class="bg" aria-hidden="true">
+  <div class="bg__glow bg__glow--1"></div>
+  <div class="bg__glow bg__glow--2"></div>
+  <div class="bg__grid"></div>
+</div>
+
+<!-- ══════════════ 3D CANVAS ══════════════ -->
+<canvas id="webgl" aria-hidden="true"></canvas>
+
+<!-- ══════════════ NAV ══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__logo" aria-label="Soumya Dubey — back to top">
+      <span class="nav__logo-mark">SD</span>
+      <span class="nav__logo-text">Soumya&nbsp;Dubey</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about"      class="nav__link">About</a>
+      <a href="#skills"     class="nav__link">Skills</a>
+      <a href="#experience" class="nav__link">Experience</a>
+      <a href="#projects"   class="nav__link">Projects</a>
+      <a href="#contact"    class="nav__link">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.2v2.6M12 19.2v2.6M2.2 12h2.6M19.2 12h2.6M5.1 5.1l1.9 1.9M17 17l1.9 1.9M18.9 5.1L17 7M7 17l-1.9 1.9"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z"/></svg>
+      </button>
+
+      <!-- ⬇️ Swap the href with your real résumé PDF path -->
+      <a href="assets/Soumya-Dubey-Resume.pdf" download class="btn btn--ghost btn--sm nav__resume">Résumé</a>
+
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ MOBILE MENU ══════════════ -->
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#about"      class="mobile-menu__link">About</a>
+    <a href="#skills"     class="mobile-menu__link">Skills</a>
+    <a href="#experience" class="mobile-menu__link">Experience</a>
+    <a href="#projects"   class="mobile-menu__link">Projects</a>
+    <a href="#contact"    class="mobile-menu__link">Contact</a>
+  </nav>
+  <a href="assets/Soumya-Dubey-Resume.pdf" download class="btn btn--primary mobile-menu__cta">Download Résumé</a>
+</div>
+
+<main id="main">
+
+  <!-- ══════════════════════ 01 — HERO ══════════════════════ -->
+  <section id="hero" class="section hero">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="tag hero__tag">01 — Portfolio / 2026</p>
+
+        <h1 class="hero__title">
+          <span class="line"><span class="word" style="--i:0">Soumya</span></span>
+          <span class="line"><span class="word word--accent" style="--i:1">Dubey</span></span>
+        </h1>
+
+        <p class="hero__role mono">
+          <span id="typewriter" data-words="UI/UX Designer,Full-Stack Developer in training,Design-Systems Thinker,Problem Solver"></span><span class="caret" aria-hidden="true"></span>
+        </p>
+
+        <p class="hero__pitch">Turning ideas into interfaces — and interfaces into working products.</p>
+
+        <div class="hero__cta">
+          <a href="#projects" class="btn btn--primary magnetic">View Projects</a>
+          <a href="assets/Soumya-Dubey-Resume.pdf" download class="btn btn--ghost magnetic">Download Résumé</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll down to About">
+      <span class="scroll-cue__line" aria-hidden="true"></span>
+      <span class="mono">Scroll</span>
+    </a>
+  </section>
+
+  <!-- ══════════════════════ 02 — ABOUT ══════════════════════ -->
+  <section id="about" class="section about">
+    <div class="container">
+      <header class="section__head">
+        <p class="tag">02 — About</p>
+        <h2 class="section__title">Design-minded.<br />Code-driven.</h2>
+      </header>
+
+      <div class="about__grid">
+        <p class="about__lead reveal">
+          Enthusiastic BCA student and aspiring UI/UX &amp; Full-Stack Developer with a strong foundation in
+          programming, front-end technologies, and problem-solving.
+        </p>
+
+        <div class="about__col">
+          <p class="about__body reveal">
+            Hands-on experience through a graphic design internship and academic projects — including the
+            <strong>LIFELINE BLOOD CONNECT</strong> platform and a college website — with a growing focus on
+            modern UI/UX practice, responsive development, and AI-assisted design &amp; coding workflows.
+          </p>
+          <p class="about__body reveal">
+            Genuinely interested in applying technical and creative skills to real-world and social-impact
+            projects.
+          </p>
+        </div>
+      </div>
+
+      <!-- Education strip -->
+      <div class="edu reveal">
+        <p class="tag edu__tag">Education</p>
+        <ul class="edu__list" data-stagger="90">
+          <li class="edu__item">
+            <span class="edu__year mono">2023 — 2026</span>
+            <span class="edu__what">Bachelor of Computer Applications</span>
+            <span class="edu__where">Banasthali Vidyapith, Rajasthan</span>
+          </li>
+          <li class="edu__item">
+            <span class="edu__year mono">2022 — 2023</span>
+            <span class="edu__what">12th — Commerce</span>
+            <span class="edu__where">Banasthali Vidyapith, Rajasthan</span>
+          </li>
+          <li class="edu__item">
+            <span class="edu__year mono">2020 — 2021</span>
+            <span class="edu__what">10th — ICSE</span>
+            <span class="edu__where">ICSE Board</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 03 — SKILLS ══════════════════════ -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <header class="section__head">
+        <p class="tag">03 — Skills</p>
+        <h2 class="section__title">The toolkit.</h2>
+        <p class="section__lead">
+          From low-level languages to design systems — the stack I use to take an idea from sketch to shipped.
+        </p>
+      </header>
+
+      <div class="bento" data-stagger="90">
+
+        <article class="bento__card tilt bento__card--lg">
+          <p class="bento__tag mono">Languages</p>
+          <h3 class="bento__title">Programming</h3>
+          <ul class="chips">
+            <li class="chip">C</li><li class="chip">C++</li><li class="chip">Java</li>
+            <li class="chip">JavaScript (ES6+)</li><li class="chip">Python</li><li class="chip">SQL</li>
+          </ul>
+        </article>
+
+        <article class="bento__card tilt bento__card--lg">
+          <p class="bento__tag mono">Front-End</p>
+          <h3 class="bento__title">UI Development</h3>
+          <ul class="chips">
+            <li class="chip">HTML5</li><li class="chip">CSS3</li><li class="chip">Responsive Design</li>
+            <li class="chip">Tailwind CSS</li><li class="chip">Bootstrap</li>
+          </ul>
+        </article>
+
+        <article class="bento__card tilt">
+          <p class="bento__tag mono">UI/UX</p>
+          <h3 class="bento__title">Design Foundations</h3>
+          <ul class="chips">
+            <li class="chip">Figma</li><li class="chip">Wireframing</li><li class="chip">Prototyping</li>
+            <li class="chip">Design Systems</li><li class="chip">User-Centered Design</li>
+            <li class="chip">Accessibility (WCAG)</li>
+          </ul>
+        </article>
+
+        <article class="bento__card tilt">
+          <p class="bento__tag mono">Stack</p>
+          <h3 class="bento__title">Full-Stack &amp; Tools</h3>
+          <ul class="chips">
+            <li class="chip">Git &amp; GitHub</li><li class="chip">REST APIs</li><li class="chip">Node.js (basics)</li>
+            <li class="chip">MongoDB / MySQL</li><li class="chip">VS Code</li>
+          </ul>
+        </article>
+
+        <article class="bento__card tilt">
+          <p class="bento__tag mono">AI</p>
+          <h3 class="bento__title">AI-Assisted Workflow</h3>
+          <ul class="chips">
+            <li class="chip">Copilot / Claude</li><li class="chip">Figma AI</li><li class="chip">Canva AI</li>
+          </ul>
+        </article>
+
+        <article class="bento__card tilt bento__card--lg">
+          <p class="bento__tag mono">Fundamentals</p>
+          <h3 class="bento__title">Core CS</h3>
+          <ul class="chips">
+            <li class="chip">OOPs</li><li class="chip">Data Structures</li><li class="chip">Algorithms</li>
+            <li class="chip">Problem Solving</li>
+          </ul>
+        </article>
+
+        <article class="bento__card tilt bento__card--lg">
+          <p class="bento__tag mono">Human</p>
+          <h3 class="bento__title">Soft Skills</h3>
+          <ul class="chips">
+            <li class="chip">Communication</li><li class="chip">Creative Thinking</li><li class="chip">Teamwork</li>
+            <li class="chip">Adaptability</li><li class="chip">Time Management</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 04 — EXPERIENCE ══════════════════════ -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <header class="section__head">
+        <p class="tag">04 — Experience</p>
+        <h2 class="section__title">The journey so far.</h2>
+      </header>
+
+      <div class="timeline" id="timeline">
+        <svg class="timeline__rail" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true">
+          <path class="timeline__track" d="M1 0 L1 100" vector-effect="non-scaling-stroke" />
+          <path class="timeline__progress" id="tlProgress" d="M1 0 L1 100" pathLength="1" vector-effect="non-scaling-stroke" />
+        </svg>
+
+        <ol class="timeline__list" data-stagger="120">
+
+          <li class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="tl-card tilt">
+              <p class="tl-card__meta mono">Internship</p>
+              <h3 class="tl-card__title">Graphic Designing Intern</h3>
+              <p class="tl-card__org">InAmigo Foundation — Chhattisgarh</p>
+              <p class="tl-card__text">
+                Gained hands-on experience in graphic design and creative content development. Designed social
+                media posters, reels, banners, and promotional creatives for real-world and social-impact
+                projects. Collaborated with marketing and content teams to turn ideas into visual designs.
+              </p>
+            </article>
+          </li>
+
+          <li class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="tl-card tilt">
+              <p class="tl-card__meta mono">Academic Project</p>
+              <h3 class="tl-card__title">LIFELINE BLOOD CONNECT &amp; College Website</h3>
+              <p class="tl-card__org">Team Collaboration</p>
+              <p class="tl-card__text">
+                Collaborated with a team to build a college website and design the LIFELINE BLOOD CONNECT
+                platform — improving connectivity between blood donors and recipients through a user-friendly
+                interface. Assisted in planning, design, and coordination.
+              </p>
+            </article>
+          </li>
+
+          <li class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="tl-card tilt">
+              <p class="tl-card__meta mono">Freelance</p>
+              <h3 class="tl-card__title">Graphic Design for Small Business Owners</h3>
+              <p class="tl-card__org">Client Work</p>
+              <p class="tl-card__text">
+                Designed professional visiting cards and branding assets for small business clients, iterating
+                on feedback to deliver clean, practical designs.
+              </p>
+            </article>
+          </li>
+
+          <li class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <article class="tl-card tilt">
+              <p class="tl-card__meta mono">Certification</p>
+              <h3 class="tl-card__title">Cybersecurity in Finance</h3>
+              <p class="tl-card__org">Simplilearn SkillUp</p>
+              <p class="tl-card__text">
+                Cyber threats, security controls, and best practices for safeguarding financial data in
+                tech-driven environments.
+              </p>
+            </article>
+          </li>
+
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 05 — PROJECTS ══════════════════════ -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <header class="section__head">
+        <p class="tag">05 — Projects</p>
+        <h2 class="section__title">Selected work.</h2>
+      </header>
+
+      <div class="projects__list">
+
+        <!-- ── Project 1 ── -->
+        <article class="project reveal reveal--scale">
+          <div class="project__media">
+            <div class="mock mock--a">
+              <div class="mock__bar"><i></i><i></i><i></i><span class="mono">lifeline.app</span></div>
+              <div class="mock__body">
+                <div class="mock__side"><b></b><b></b><b></b><b></b></div>
+                <div class="mock__main">
+                  <div class="mock__hero"></div>
+                  <div class="mock__row"><span></span><span></span><span></span></div>
+                  <div class="mock__row"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <!-- Replace the .mock above with:
+                 <img src="assets/lifeline.png" alt="LIFELINE BLOOD CONNECT donor matching interface" loading="lazy" /> -->
+            <span class="project__badge mono">Case Study</span>
+          </div>
+
+          <div class="project__body">
+            <p class="tag">01 / Platform</p>
+            <h3 class="project__title">LIFELINE BLOOD CONNECT</h3>
+            <p class="project__desc">
+              A donor–recipient connection platform that shortens the gap between someone who needs blood and
+              someone willing to give it. Focused on a frictionless request flow, clear donor discovery, and an
+              interface that stays calm under pressure.
+            </p>
+            <ul class="chips chips--sm">
+              <li class="chip">UI/UX</li><li class="chip">Responsive</li><li class="chip">Team Project</li>
+            </ul>
+            <a href="#" class="project__link magnetic" aria-label="View LIFELINE BLOOD CONNECT case study">
+              View Case Study <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- ── Project 2 ── -->
+        <article class="project project--reverse reveal reveal--scale">
+          <div class="project__media">
+            <div class="mock mock--b">
+              <div class="mock__bar"><i></i><i></i><i></i><span class="mono">college.edu</span></div>
+              <div class="mock__body">
+                <div class="mock__main mock__main--full">
+                  <div class="mock__hero"></div>
+                  <div class="mock__row"><span></span><span></span></div>
+                  <div class="mock__row"><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <span class="project__badge mono">Case Study</span>
+          </div>
+
+          <div class="project__body">
+            <p class="tag">02 / Web</p>
+            <h3 class="project__title">College Website</h3>
+            <p class="project__desc">
+              An informational site built collaboratively — structured navigation, accessible typography, and a
+              content hierarchy that makes finding departments, notices, and admissions effortless.
+            </p>
+            <ul class="chips chips--sm">
+              <li class="chip">HTML/CSS</li><li class="chip">Accessibility</li><li class="chip">Collaboration</li>
+            </ul>
+            <a href="#" class="project__link magnetic" aria-label="View College Website case study">
+              View Case Study <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- ── Project 3 ── -->
+        <article class="project reveal reveal--scale">
+          <div class="project__media">
+            <div class="mock mock--c">
+              <div class="mock__cards">
+                <div class="mock__card"><span class="mono">A.</span><b></b><i></i></div>
+                <div class="mock__card"><span class="mono">B.</span><b></b><i></i></div>
+                <div class="mock__card"><span class="mono">C.</span><b></b><i></i></div>
+              </div>
+            </div>
+            <span class="project__badge mono">Branding</span>
+          </div>
+
+          <div class="project__body">
+            <p class="tag">03 / Identity</p>
+            <h3 class="project__title">Small-Business Branding Suite</h3>
+            <p class="project__desc">
+              Visiting cards and brand collateral designed for local business owners — practical, print-ready,
+              and built through fast feedback loops that kept the identity clean and consistent.
+            </p>
+            <ul class="chips chips--sm">
+              <li class="chip">Identity</li><li class="chip">Print</li><li class="chip">Client Work</li>
+            </ul>
+            <a href="#" class="project__link magnetic" aria-label="View Small-Business Branding Suite case study">
+              View Case Study <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 06 — CONTACT ══════════════════════ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <header class="section__head section__head--center">
+        <p class="tag">06 — Contact</p>
+        <h2 class="section__title section__title--xl">Let's build something.</h2>
+        <p class="section__lead">
+          Open to internships, freelance design work, and collaborative side projects.
+        </p>
+      </header>
+
+      <div class="contact__grid">
+
+        <form class="contact__form reveal" id="contactForm" novalidate>
+          <div class="field">
+            <input class="field__input" type="text" id="cf-name" name="name" placeholder=" " autocomplete="name" required />
+            <label class="field__label" for="cf-name">Name</label>
+          </div>
+
+          <div class="field">
+            <input class="field__input" type="email" id="cf-email" name="email" placeholder=" " autocomplete="email" required />
+            <label class="field__label" for="cf-email">Email</label>
+          </div>
+
+          <div class="field">
+            <textarea class="field__input field__input--area" id="cf-message" name="message" placeholder=" " rows="4" required></textarea>
+            <label class="field__label" for="cf-message">Message</label>
+          </div>
+
+          <button class="btn btn--primary submit-btn magnetic" type="submit" id="submitBtn">
+            <span class="submit-btn__text">Send Message</span>
+            <span class="submit-btn__spinner" aria-hidden="true"></span>
+            <svg class="submit-btn__check" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+          </button>
+
+          <p class="form-note mono" id="formNote" role="status" aria-live="polite">
+            Demo only — connect Formspree to receive messages.
+          </p>
+        </form>
+
+        <aside class="contact__links reveal">
+          <p class="tag">Direct</p>
+          <a class="contact__link magnetic" href="mailto:soumyadubey154@gmail.com">
+            <span class="contact__link-label mono">Email</span>
+            <span class="contact__link-value">soumyadubey154@gmail.com</span>
+          </a>
+          <a class="contact__link magnetic" href="https://linkedin.com/in/soumya-dubey-87250029b" target="_blank" rel="noopener noreferrer">
+            <span class="contact__link-label mono">LinkedIn</span>
+            <span class="contact__link-value">soumya-dubey-87250029b</span>
+          </a>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>UI/UX</span><i>·</i><span>Full-Stack</span><i>·</i><span>Creative</span><i>·</i><span>Detail-obsessed</span><i>·</i>
+      <span>UI/UX</span><i>·</i><span>Full-Stack</span><i>·</i><span>Creative</span><i>·</i><span>Detail-obsessed</span><i>·</i>
+      <span>UI/UX</span><i>·</i><span>Full-Stack</span><i>·</i><span>Creative</span><i>·</i><span>Detail-obsessed</span><i>·</i>
+    </div>
+  </div>
+
+  <div class="container footer__inner">
+    <p class="footer__copy mono">© <span id="year">2026</span> Soumya Dubey — Built from scratch.</p>
+    <button class="to-top" id="toTop" type="button" aria-label="Scroll back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      <span class="mono">Top</span>
+    </button>
+  </div>
+</footer>
+
+<!-- ══════════════ THREE.JS IMPORT MAP ══════════════ -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+
+<script src="script.js" type="module"></script>
+</body>
+</html>
